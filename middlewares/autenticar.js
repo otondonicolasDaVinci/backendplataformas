@@ -6,7 +6,7 @@ const autenticar = (rolRequerido) => {
         if (!token) return res.status(401).send('Acceso denegado');
 
         try {
-            const tokenSinBearer = token.split(' ')[1]; // Remueve el prefijo "Bearer"
+            const tokenSinBearer = token.split(' ')[1];
             const datos = jwt.verify(tokenSinBearer, 'secreto');
             req.usuario = datos;
             if (rolRequerido && req.usuario.rol !== rolRequerido) {
